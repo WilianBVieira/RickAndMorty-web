@@ -1,4 +1,5 @@
 import React from "react";
+import { IRAMProps, IRickAndMorty } from "../../screens/Home";
 import {
   Container,
   ImageContainer,
@@ -10,14 +11,14 @@ import {
   StatsStatusContainer,
 } from "./style";
 
-const Card = () => {
+const Card = ({ data }: IRAMProps) => {
   return (
     <Container>
       <ImageContainerPai>
         <ImageContainer />
       </ImageContainerPai>
       <InfoContainer>
-        <NameContainer>Rick sanchez</NameContainer>
+        <NameContainer>{data && data[0].name}</NameContainer>
         <StatsGenderContainer>Gender</StatsGenderContainer>
         <StatsStatusContainer>Status</StatsStatusContainer>
         <StatsSpeciesContainer>Species</StatsSpeciesContainer>
