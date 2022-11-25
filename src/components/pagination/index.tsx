@@ -1,7 +1,8 @@
 import React from "react";
+import { Container } from "./style";
 
 const Pagination = () => {
-  return <div>Pagination</div>;
+  return <Container />;
 };
 
 export default Pagination;
