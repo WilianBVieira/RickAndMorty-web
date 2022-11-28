@@ -1,14 +1,15 @@
-import React from "react";
+import { Grid } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import { IRAMProps } from "../../screens/Home";
 import Card from "../card";
 import { Container } from "./style";
 
 const CardList = ({ data }: IRAMProps) => {
-  console.log(data);
+  useEffect(() => {}, [data]);
   return (
-    <Container>
+    <Grid>
       <Card data={data} />
-    </Container>
+    </Grid>
   );
 };
 

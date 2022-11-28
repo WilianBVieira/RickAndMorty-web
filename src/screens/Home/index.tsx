@@ -26,7 +26,7 @@ export interface IRickAndMorty {
   created: string;
 }
 
-interface IReq {
+export interface IReq {
   results: [IRickAndMorty];
 }
 

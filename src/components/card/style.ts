@@ -19,6 +19,12 @@ export const ImageContainer = styled.image`
   background-color: blue;
   width: 85%;
   height: 50%;
+  display: flex;
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const InfoContainer = styled.div`
@@ -44,7 +50,7 @@ export const StatsGenderContainer = styled.text`
 `;
 
 export const StatsStatusContainer = styled.text`
-  background-color: black;
+  background-color: lightcoral;
   height: 13%;
   width: 90%;
 `;
