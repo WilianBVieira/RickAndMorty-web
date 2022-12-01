@@ -1,5 +1,5 @@
-import React from "react";
-import { IRAMProps } from "../../screens/Home";
+import React, { useEffect, useState } from "react";
+import { IRAMProps, IRickAndMorty } from "../../screens/Home";
 import {
   Container,
   ImageContainer,
@@ -12,24 +12,39 @@ import {
   StatsStatusContainer,
 } from "./style";
 
-const Card = ({ data }: IRAMProps) => {
+interface ICard {
+  id: number;
+  name: string;
+}
+
+interface ICardProps {
+  data: ICard;
+}
+
+const Card = ({ data }: ICardProps) => {
+  const [cardInfo, setCardInfo] = useState<IRickAndMorty>();
+  useEffect(() => {
+    fetch(`https://rickandmortyapi.com/api/character/${data.id}`)
+      .then((res) => res.json())
+      .then((data) => setCardInfo(data));
+  }, [data]);
   return (
     <Container>
       <ImageContainerPai>
         <ImageContainer>
-          <Img src={data && data[0].image} />
+          <Img src={cardInfo && cardInfo.image} />
         </ImageContainer>
       </ImageContainerPai>
       <InfoContainer>
-        <NameContainer>{data && data[0].name}</NameContainer>
+        <NameContainer>{cardInfo && cardInfo.name}</NameContainer>
         <StatsGenderContainer>
-          Gender: {data && data[0].gender}
+          Gender: {cardInfo && cardInfo.gender}
         </StatsGenderContainer>
         <StatsStatusContainer>
-          Status: {data && data[0].status}
+          Status: {cardInfo && cardInfo.status}
         </StatsStatusContainer>
         <StatsSpeciesContainer>
-          Species: {data && data[0].species}
+          Species: {cardInfo && cardInfo.species}
         </StatsSpeciesContainer>
       </InfoContainer>
     </Container>

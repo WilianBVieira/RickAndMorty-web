@@ -1,36 +1,16 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import { IRAMProps } from "../../screens/Home";
+import { IRAMProps, IReq } from "../../screens/Home";
 import Card from "../card";
 import { Container } from "./style";
 
-const CardList = ({ data }: IRAMProps) => {
-  useEffect(() => {}, [data]);
+const CardList = ({ results }: IReq) => {
+  useEffect(() => {}, [results]);
+
   return (
     <Container>
-      <Grid
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(3, 1fr)"
-        gap={2}
-      >
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
-        <GridItem>
-          <Card data={data} />
-        </GridItem>
+      <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+        {results && results.map((l, i) => <Card data={l} key={i} />)}
       </Grid>
     </Container>
   );

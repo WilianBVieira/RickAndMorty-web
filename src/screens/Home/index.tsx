@@ -27,7 +27,7 @@ export interface IRickAndMorty {
 }
 
 export interface IReq {
-  results: [IRickAndMorty];
+  results: [IRickAndMorty] | undefined;
 }
 
 export interface IRAMProps {
@@ -35,19 +35,18 @@ export interface IRAMProps {
 }
 
 const Home = () => {
-  const [data, setData] = useState<[IRickAndMorty]>();
+  const [data, setData] = useState<IReq>();
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character?page=1`)
       .then((res) => res.json())
-      .then((data: IReq) => setData(data.results));
+      .then((data) => setData(data));
   }, []);
-
   return (
     <Container>
       <Logo />
       <Searchbar />
-      <CardList data={data} />
+      <CardList results={data?.results} />
       <Pagination />
     </Container>
   );
