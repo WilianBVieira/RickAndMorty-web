@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IRAMProps, IRickAndMorty } from "../../screens/Home";
 import {
   Container,
+  ContainerStats,
   ImageContainer,
   ImageContainerPai,
   Img,
@@ -37,15 +38,17 @@ const Card = ({ data }: ICardProps) => {
       </ImageContainerPai>
       <InfoContainer>
         <NameContainer>{cardInfo && cardInfo.name}</NameContainer>
-        <StatsGenderContainer>
-          Gender: {cardInfo && cardInfo.gender}
-        </StatsGenderContainer>
-        <StatsStatusContainer>
-          Status: {cardInfo && cardInfo.status}
-        </StatsStatusContainer>
-        <StatsSpeciesContainer>
-          Species: {cardInfo && cardInfo.species}
-        </StatsSpeciesContainer>
+        <ContainerStats>
+          <StatsGenderContainer>
+            Gender: {cardInfo && cardInfo.gender}
+          </StatsGenderContainer>
+          <StatsStatusContainer>
+            Status: {cardInfo && cardInfo.status}
+          </StatsStatusContainer>
+          <StatsSpeciesContainer>
+            Species: {cardInfo && cardInfo.species}
+          </StatsSpeciesContainer>
+        </ContainerStats>
       </InfoContainer>
     </Container>
   );

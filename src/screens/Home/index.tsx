@@ -36,18 +36,31 @@ export interface IRAMProps {
 
 const Home = () => {
   const [data, setData] = useState<IReq>();
+  const [page, setPage] = useState(1);
+  function handlePage(click: number) {
+    if ((click: typeof page) => 1) {
+      setPage(page + click);
+    }
+  }
 
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character?page=1`)
+    console.log(`render home`);
+  }, data?.results);
+
+  useEffect(() => {
+    fetch(`https://rickandmortyapi.com/api/character?page=${page - 1}`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [page]);
   return (
     <Container>
       <Logo />
       <Searchbar />
-      <CardList results={data?.results} />
-      <Pagination />
+      <CardList results={data && data.results} />
+      <Pagination
+        pages={page}
+        handleClick={(click: number) => handlePage(click)}
+      />
     </Container>
   );
 };
