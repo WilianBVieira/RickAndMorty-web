@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { IRAMProps, IRickAndMorty } from "../../screens/Home";
+import { IRickAndMorty } from "../../interfaces/char";
+import { IRAMProps } from "../../screens/Home";
 import {
   Container,
   ContainerStats,

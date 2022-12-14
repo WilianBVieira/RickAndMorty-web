@@ -1,6 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { IRAMProps, IReq, IRickAndMorty } from "../../screens/Home";
+import { IRAMProps, IReq } from "../../screens/Home";
 import Card from "../card";
 import LoadingComponent from "../loading";
 import { Container } from "./style";
