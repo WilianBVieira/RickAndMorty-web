@@ -8,6 +8,7 @@ import { Container } from "./style";
 
 export interface IReq {
   results: [IRickAndMorty] | undefined;
+  loading: boolean;
 }
 
 export interface IRAMProps {
@@ -17,6 +18,8 @@ export interface IRAMProps {
 const Home = () => {
   const [data, setData] = useState<IReq>();
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
   function handlePage(click: number) {
     if ((click: typeof page) => 1) {
       setPage(page + click);
@@ -28,15 +31,17 @@ const Home = () => {
   }, data?.results);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://rickandmortyapi.com/api/character?page=${page - 1}`)
       .then((res) => res.json())
       .then((data) => setData(data));
+    setLoading(false);
   }, [page]);
   return (
     <Container>
       <Logo />
       <Searchbar />
-      <CardList results={data && data.results} />
+      <CardList results={data && data.results} loading={loading} />
       <Pagination
         pages={page}
         handleClick={(click: number) => handlePage(click)}
