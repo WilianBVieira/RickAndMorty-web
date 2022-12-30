@@ -1,5 +1,5 @@
 import { Grid } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IReq } from "../../screens/Home";
 import Card from "../card";
 import LoadingComponent from "../loading";

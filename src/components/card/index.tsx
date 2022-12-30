@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { IRickAndMorty } from "../../interfaces/char";
 import { IRAMProps } from "../../screens/Home";
 import {
@@ -14,12 +15,12 @@ import {
   StatsStatusContainer,
 } from "./style";
 
-interface ICard {
+export interface ICard {
   id: number;
   name: string;
 }
 
-interface ICardProps {
+export interface ICardProps {
   data: ICard;
 }
 
@@ -31,27 +32,29 @@ const Card = ({ data }: ICardProps) => {
       .then((data) => setCardInfo(data));
   }, [data]);
   return (
-    <Container>
-      <ImageContainerPai>
-        <ImageContainer>
-          <Img src={cardInfo && cardInfo.image} />
-        </ImageContainer>
-      </ImageContainerPai>
-      <InfoContainer>
-        <NameContainer>{cardInfo && cardInfo.name}</NameContainer>
-        <ContainerStats>
-          <StatsGenderContainer>
-            Gender: {cardInfo && cardInfo.gender}
-          </StatsGenderContainer>
-          <StatsStatusContainer>
-            Status: {cardInfo && cardInfo.status}
-          </StatsStatusContainer>
-          <StatsSpeciesContainer>
-            Species: {cardInfo && cardInfo.species}
-          </StatsSpeciesContainer>
-        </ContainerStats>
-      </InfoContainer>
-    </Container>
+    <Link to="/Details" state={{ char: data }}>
+      <Container>
+        <ImageContainerPai>
+          <ImageContainer>
+            <Img src={cardInfo && cardInfo.image} />
+          </ImageContainer>
+        </ImageContainerPai>
+        <InfoContainer>
+          <NameContainer>{cardInfo && cardInfo.name}</NameContainer>
+          <ContainerStats>
+            <StatsGenderContainer>
+              Gender: {cardInfo && cardInfo.gender}
+            </StatsGenderContainer>
+            <StatsStatusContainer>
+              Status: {cardInfo && cardInfo.status}
+            </StatsStatusContainer>
+            <StatsSpeciesContainer>
+              Species: {cardInfo && cardInfo.species}
+            </StatsSpeciesContainer>
+          </ContainerStats>
+        </InfoContainer>
+      </Container>
+    </Link>
   );
 };
 
